@@ -1,0 +1,100 @@
+{
+  "kind": "collectionType",
+  "collectionName": "e_users",
+  "info": {
+    "singularName": "e-user",
+    "pluralName": "e-users",
+    "displayName": "User"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "username": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "email": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "password": {
+      "type": "password",
+      "required": true,
+      "private": true
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "dateOfBirth": {
+      "type": "date"
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": ["male", "female", "other"]
+    },
+    "isVerified": {
+      "type": "boolean",
+      "default": false
+    },
+    "createdAt": {
+      "type": "datetime",
+      "private": true
+    },
+    "customer_profile": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::customer-profile.customer-profile"
+    },
+    "addresses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::address.address",
+      "mappedBy": "user"
+    },
+    "cart": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cart.cart"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "user"
+    },
+    "wishlists": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::wishlist.wishlist",
+      "mappedBy": "user"
+    },
+    "survey_responses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::survey-response.survey-response",
+      "mappedBy": "user"
+    },
+    "notifications": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::notification.notification",
+      "mappedBy": "user"
+    },
+    "prescription_reminders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::prescription-reminder.prescription-reminder",
+      "mappedBy": "user"
+    }
+  }
+}

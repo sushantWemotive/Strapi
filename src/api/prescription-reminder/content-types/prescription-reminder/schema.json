@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "prescription_reminders",
+  "info": {
+    "singularName": "prescription-reminder",
+    "pluralName": "prescription-reminders",
+    "displayName": "Prescription Reminder"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "medicationName": {
+      "type": "string",
+      "required": true
+    },
+    "dosage": {
+      "type": "string",
+      "required": true
+    },
+    "frequency": {
+      "type": "string",
+      "required": true
+    },
+    "reminderTimes": {
+      "type": "json",
+      "required": true
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "lastTaken": {
+      "type": "datetime"
+    },
+    "nextDue": {
+      "type": "datetime"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::e-user.e-user",
+      "inversedBy": "prescription_reminders"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "prescription_reminders"
+    }
+  }
+}

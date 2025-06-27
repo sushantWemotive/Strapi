@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "survey_questions",
+  "info": {
+    "singularName": "survey-question",
+    "pluralName": "survey-questions",
+    "displayName": "Survey Question"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "questionText": {
+      "type": "text",
+      "required": true
+    },
+    "questionType": {
+      "type": "enumeration",
+      "enum": ["text", "multiple_choice", "checkbox", "dropdown", "rating", "date"],
+      "required": true
+    },
+    "isRequired": {
+      "type": "boolean",
+      "default": false
+    },
+    "sortOrder": {
+      "type": "integer"
+    },
+    "options": {
+      "type": "json"
+    },
+    "validationRules": {
+      "type": "json"
+    },
+    "survey": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::survey.survey",
+      "inversedBy": "questions"
+    }
+  }
+}

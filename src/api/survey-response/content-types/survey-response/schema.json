@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "survey_responses",
+  "info": {
+    "singularName": "survey-response",
+    "pluralName": "survey-responses",
+    "displayName": "Survey Response"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "responses": {
+      "type": "json",
+      "required": true
+    },
+    "isCompleted": {
+      "type": "boolean",
+      "default": false
+    },
+    "timeSpent": {
+      "type": "integer",
+      "description": "Time spent in seconds"
+    },
+    "survey": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::survey.survey",
+      "inversedBy": "responses"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::e-user.e-user",
+      "inversedBy": "survey_responses"
+    }
+  }
+}

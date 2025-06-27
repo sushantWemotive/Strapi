@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payments",
+  "info": {
+    "singularName": "payment",
+    "pluralName": "payments",
+    "displayName": "payment"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "paymentMethod": {
+      "type": "enumeration",
+      "enum": ["credit_card", "debit_card", "net_banking", "upi", "wallet", "cod"],
+      "required": true
+    },
+    "paymentGateway": {
+      "type": "string"
+    },
+    "transactionId": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "decimal",
+      "required": true
+    },
+    "paymentStatus": {
+      "type": "enumeration",
+      "enum": ["pending", "success", "failed", "refunded"],
+      "default": "pending"
+    },
+    "gatewayResponse": {
+      "type": "json"
+    },
+    "initiatedAt": {
+      "type": "datetime"
+    },
+    "completedAt": {
+      "type": "datetime"
+    },
+    "order": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::order.order",
+      "inversedBy": "payments"
+    },
+    "refunds": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::refund.refund",
+      "mappedBy": "payment"
+    }
+  }
+}

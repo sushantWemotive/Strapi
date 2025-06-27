@@ -17,7 +17,7 @@
     "reviewer": {
       "type": "string"
     },
-    "film": {
+    "Film": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::film.film",

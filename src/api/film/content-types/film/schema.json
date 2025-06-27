@@ -14,17 +14,24 @@
     "title": {
       "type": "string"
     },
-    "released": {
-      "type": "date"
-    },
-    "director": {
-      "type": "string"
-    },
     "reviews": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::review.review",
-      "mappedBy": "film"
+      "mappedBy": "Film"
+    },
+    "released": {
+      "type": "date"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

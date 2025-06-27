@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "inventories",
+  "info": {
+    "singularName": "inventory",
+    "pluralName": "inventories",
+    "displayName": "inventory"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "currentStock": {
+      "type": "integer",
+      "required": true
+    },
+    "reservedStock": {
+      "type": "integer",
+      "required": true
+    },
+    "availableStock": {
+      "type": "integer",
+      "required": true
+    },
+    "reorderLevel": {
+      "type": "integer"
+    },
+    "lastStockUpdate": {
+      "type": "datetime"
+    },
+    "product_variant": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product-variant.product-variant",
+      "inversedBy": "inventory"
+    }
+  }
+}
